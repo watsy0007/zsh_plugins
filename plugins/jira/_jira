@@ -1,0 +1,39 @@
+#compdef jira
+#autoload
+
+_jira() {
+    local curcontext="$curcontext" state line
+    typeset -A opt_args
+
+    _arguments \
+        '1: :->command'\
+        '2: :->sub_command'\
+        '*: :->args'
+ 
+    case $state in
+    command)
+        _arguments '1:Commands:(issue sprint project board help login logout)'
+    ;;
+    *)
+        case $words[2] in
+        issue)
+            compadd "$@" ISSUE_KEY ls assign comment delete edit help new open take trans
+                case $words[3] in
+                help)
+                    compadd "$@" ls assign comment delete edit new open take trans
+                ;;
+                esac
+        ;;
+        sprint)
+            compadd "$@" Berlin Munich Dresden
+        ;;
+        project)
+            compadd "$@" Rome Napoli Palermo
+        ;;
+        *)
+            _files 
+        esac
+    esac  
+}
+
+_jira "$@"
