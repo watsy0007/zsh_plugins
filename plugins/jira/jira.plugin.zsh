@@ -1,6 +1,6 @@
 alias jirai="jira issue"
 alias jirails="jira issue ls"
 alias jiraic="jira issue comment"
-alias jiraitr="jira issues trans"
+alias jiraitr="jira issue trans"
 alias jiras="jira sprint"
 alias jirap="jira project"
